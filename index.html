@@ -294,6 +294,18 @@
         debounce()
       }
 
+      let resetButton = document.createElement('button')
+      resetButton.textContent = 'Reset'
+      resetButton.onclick = () => {
+        lhInputs = [...lhs.querySelectorAll('input')]
+        lhInputs.forEach((_, index) => {
+          lhInputs[index].value = 600
+          })
+        
+        shards.value = '0'
+        debounce()
+      }
+
       let estimatedShardsLabel = document.createElement('h5')
       let estimatedShardsValueLabel = document.createElement('h3')
       estimatedShardsLabel.textContent = 'Est. shards needed to raise GS:'
@@ -356,6 +368,13 @@
       buttonContainer.appendChild(estimatedShardsLabel)
       buttonContainer.appendChild(estimatedShardsValueLabel)
 
+      let resetButtonContainer = document.createElement('div')
+      resetButtonContainer.appendChild(resetButton)
+
+      resetButtonContainer.appendChild(document.createElement('br'))
+      resetButtonContainer.appendChild(document.createElement('br'))
+      
+
       let boxContainer = document.createElement('div')
       boxContainer.style.margin = '0 auto'
       boxContainer.style.padding = '0 10%'
@@ -368,7 +387,9 @@
       container.appendChild(shards)
       container.appendChild(boxContainer)
       container.appendChild(buttonContainer)
+      container.appendChild(resetButtonContainer)
       document.body.appendChild(container)
+
 
       load()
     </script>
